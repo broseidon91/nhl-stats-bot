@@ -1,0 +1,16 @@
+{
+  "name": "nhl-stats-bot",
+  "version": "1.0.0",
+  "description": "A bot to read stats from the NHL Stats API",
+  "main": "bot.js",
+  "author": "PremierBromanov",
+  "dependencies": {
+    "discord": "^0.8.2",
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.5.1",
+    "json-beautify": "^1.1.1",
+    "node": "^12.11.0",
+    "nodemon": "^1.19.2",
+    "winston": "^3.2.1"
+  }
+}

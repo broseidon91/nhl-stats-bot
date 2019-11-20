@@ -11,6 +11,10 @@
     "json-beautify": "^1.1.1",
     "node": "^12.11.0",
     "nodemon": "^1.19.2",
+    "typescript": "^3.7.2",
     "winston": "^3.2.1"
+  },
+  "scripts": {
+    "tsc": "tsc"
   }
 }

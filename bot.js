@@ -29,7 +29,10 @@ logger.level = 'debug';
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-  });
+    console.log(`Getting team data`);
+    GetAllTeams();
+
+});
 
 client.on("error", (e) => {
     fs.writeFile("logs.txt", e, err => {
@@ -38,7 +41,7 @@ client.on("error", (e) => {
 });
 
 
-client.on('message', msg => {   
+client.on('message', msg => {
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
 
     let args = msg.content.slice(1).trim().split(/ +/g);
@@ -48,7 +51,7 @@ client.on('message', msg => {
         GetAllTeams(msg, args);
     }
 
-    
+
 
 });
 
@@ -61,7 +64,7 @@ function SendMessage(msg, text) {
 
 }
 
-function GetAllTeams(msg, args) {
+function GetAllTeams() {
     let output = '';
     const req = https.get(options, (res) => {
         console.log(`statusCode: ${res.statusCode}`)
@@ -73,9 +76,18 @@ function GetAllTeams(msg, args) {
             // let obj = JSON.parse(output);
             console.log("done");
             var obj = JSON.parse(output);
-            var team = new Team(obj.teams[0]);
-            
-            SendMessage(msg, "```" + beautify(obj.teams[0], null, 2, 50) + "```");
+
+            try {
+                require('fs').writeFile('./data/teams.json', JSON.stringify(obj), function (err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                    }
+                })
+
+            } catch (err) {
+                console.log(err);
+            }
         });
 
         req.on('error', (err) => {
@@ -87,3 +99,6 @@ function GetAllTeams(msg, args) {
 
 }
 
+function SaveDictToFile() {
+
+}

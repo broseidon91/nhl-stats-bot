@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 
 module.exports = class Team {
 
@@ -22,12 +22,12 @@ module.exports = class Team {
 
     toRichEmbed() {
         let embed = new Discord.RichEmbed()
-                  .setTitle(this.name)
-                  .setColor(+teamStyles[this.team].color)
-                  .setFooter('© esilverm')
+                  .setTitle(`${this.abbr} | ${this.name}`)
                   .setTimestamp()
-                  .setThumbnail(teamStyles[this.team].logo)
-                  .addField('Player Info', 'Position: ' + this.position)
-                  .addBlankField();
+                  .addField('Info', `ID: ${this.id}\nFirst Year: ${this.firstYear}`);
+
+        embed.addField('Venue', `${this.venue.name} in ${this.venue.city}\nTimezone: ${this.venue.timeZone.tz}`);
+                
+        return embed;
     }
 }

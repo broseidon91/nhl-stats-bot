@@ -1,11 +1,19 @@
 
-const Discord = require('discord.js');
+import Discord = require('discord.js');
 const client = new Discord.Client();
-var logger = require('winston');
-var auth = require('./auth.json');
-const Team = require('./utils/Team.js')
-const https = require('https');
-const fs = require('fs');
+import logger = require('winston');
+
+//You need to create an auth json in the shape of { "token" : "yourToken"}
+//get your token from your discord development portal.
+import auth from '../auth.json';
+import * as http from 'http';
+import * as https from 'https';
+
+import * as fs from 'fs';
+import { Message } from 'discord.js';
+import { Teams } from '../src/Teams';
+import { TeamMessage } from '../src/Team';
+
 const options = {
     hostname: 'statsapi.web.nhl.com',
     port: 443,
@@ -13,19 +21,11 @@ const options = {
     method: 'GET'
 }
 
-let botId = "646749617517625354"; //the id of this bot
+//stats api url
 let url = "https://statsapi.web.nhl.com/api/v1/";
 let prefix = '$';
 let delimeter = ' ';
-var beautify = require("json-beautify");
-
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console, {
-    colorize: true
-});
-logger.level = 'debug';
-// Initialize Discord Bot
+let teams = new Teams();
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -46,9 +46,21 @@ client.on('message', msg => {
 
     let args = msg.content.slice(1).trim().split(/ +/g);
 
-    let command = args.shift().toLowerCase();
-    if (command === "teams") {
-        GetAllTeams(msg, args);
+    let command = args.shift();
+    if (command)
+        command = command.toLowerCase();
+    else
+        return;
+
+    if (command === "team" && args.length > 0) {
+
+        var id: any = args[0];
+        if (!isNaN(Number(id))) {
+            id = Number(id);
+        }
+        var team = teams.GetTeam(id);
+        if (team)
+            msg.channel.send(new TeamMessage(team).GetMessage());
     }
 
 
@@ -56,13 +68,6 @@ client.on('message', msg => {
 });
 
 client.login(auth.token);
-
-function SendMessage(msg, text) {
-    if (text === undefined)
-        return;
-    msg.channel.send(text);
-
-}
 
 function GetAllTeams() {
     let output = '';
@@ -76,18 +81,7 @@ function GetAllTeams() {
             // let obj = JSON.parse(output);
             console.log("done");
             var obj = JSON.parse(output);
-
-            try {
-                require('fs').writeFile('./data/teams.json', JSON.stringify(obj), function (err) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                    }
-                })
-
-            } catch (err) {
-                console.log(err);
-            }
+            teams.LoadJSON(obj);
         });
 
         req.on('error', (err) => {
@@ -96,9 +90,5 @@ function GetAllTeams() {
 
         req.end();
     })
-
-}
-
-function SaveDictToFile() {
 
 }

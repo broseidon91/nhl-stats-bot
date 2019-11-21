@@ -11,10 +11,16 @@
     "json-beautify": "^1.1.1",
     "node": "^12.11.0",
     "nodemon": "^1.19.2",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2",
     "winston": "^3.2.1"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./app/app.ts",
+    "prod": "tsc && node ./build/app.js"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.11"
   }
 }

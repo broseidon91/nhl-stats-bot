@@ -1,6 +1,126 @@
 {
-	"Winnipeg Jets": {
-		"logo": "http://i.imgur.com/b57y4mC.png",
-		"color": "0xb7282a"
+	"Devils": {
+		"logo": "",
+		"color": "0xCE1126"
+	},
+	"Islanders": {
+		"logo": "",
+		"color": "0x00539B"
+	},
+	"Rangers": {
+		"logo": "",
+		"color": "0x0038A8"
+	},
+	"Flyers": {
+		"logo": "",
+		"color": "0xF74902"
+	},
+	"Penguins": {
+		"logo": "",
+		"color": "0xCFC493"
+	},
+	"Bruins": {
+		"logo": "",
+		"color": "0xFFB81C"
+	},
+	"Sabres": {
+		"logo": "",
+		"color": "0x002654"
+	},
+	"Canadiens": {
+		"logo": "",
+		"color": "0xAF1E2D"
+	},
+	"Senators": {
+		"logo": "",
+		"color": "0xC52032"
+	},
+	"Maple Leafs": {
+		"logo": "",
+		"color": "0x00205b"
+	},
+	"Hurricanes": {
+		"logo": "",
+		"color": "0xCC0000"
+	},
+	"Panthers": {
+		"logo": "",
+		"color": "0x041E42"
+	},
+	"Lightning": {
+		"logo": "",
+		"color": "0x002868"
+	},
+	"Capitals": {
+		"logo": "",
+		"color": "0x041E42"
+	},
+	"Blackhawks": {
+		"logo": "",
+		"color": "0xCF0A2C"
+	},
+	"Red Wings": {
+		"logo": "",
+		"color": "0xCE1126"
+	},
+	"Predators": {
+		"logo": "",
+		"color": "0xFFB81C"
+	},
+	"Blues": {
+		"logo": "",
+		"color": "0x002F87"
+	},
+	"Flames": {
+		"logo": "",
+		"color": "0xC8102E"
+	},
+	"Avalanche": {
+		"logo": "",
+		"color": "0x6F263D"
+	},
+	"Oilers": {
+		"logo": "",
+		"color": "0x041E42"
+	},
+	"Canucks": {
+		"logo": "",
+		"color": "0x00205B"
+	},
+	"Ducks": {
+		"logo": "",
+		"color": "0x002654"
+	},
+	"Stars": {
+		"logo": "",
+		"color": "0x006847"
+	},
+	"Kings": {
+		"logo": "",
+		"color": "0x111111"
+	},
+	"Sharks": {
+		"logo": "",
+		"color": "0x006D75"
+	},
+	"Blue Jackets": {
+		"logo": "",
+		"color": "0x002654"
+	},
+	"Wild": {
+		"logo": "",
+		"color": "0xA6192E"
+	},
+	"Jets": {
+		"logo": "",
+		"color": "0x041E42"
+	},
+	"Coyotes": {
+		"logo": "",
+		"color": "0x8C2633"
+	},
+	"Golden Knights": {
+		"logo": "",
+		"color": "0xB4975A"
 	}
 }

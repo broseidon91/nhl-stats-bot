@@ -58,9 +58,9 @@ client.on('message', msg => {
         if (!isNaN(Number(id))) {
             id = Number(id);
         }
-        var team = teams.GetTeam(id);
-        if (team)
-            msg.channel.send(new TeamMessage(team).GetMessage());
+        var message = teams.GetTeam(id);
+        if (message)
+            msg.channel.send(message.GetRichEmbed());
     }
 
 

@@ -1,10 +1,9 @@
 import * as fs from 'fs';
-import { TeamData } from './Team';
+import { TeamData, TeamMessage } from './Team';
 
 export class Teams {
     private data: any;
-    private teams = new Map<number, TeamData>();
-
+    private teams = new Map<number, TeamMessage>();
     public LoadJSON(obj: any) {
         if (!obj.teams)
             return;
@@ -12,21 +11,21 @@ export class Teams {
         this.data = obj;
         for (let entry of obj.teams) {
             let team = entry as TeamData;
-            this.teams.set(team.id, team);
+            this.teams.set(team.id, new TeamMessage(team));
         }
         console.log(this.teams.keys());
     }
 
-    public GetTeam(key: number | string): TeamData {
+    public GetTeam(key: number | string): TeamMessage {
         console.log(typeof key);
         if (typeof key === 'number') {
             if (this.teams.has(key)) {
-                return this.teams.get(key) as TeamData;
+                return this.teams.get(key) as TeamMessage;
             }
         }
         return Array.from(this.teams.values()).filter(
-            (team: TeamData) => team.name.toLowerCase().includes((key as string).toLowerCase())
-            )[0] as TeamData;
+            (team: TeamMessage) => team.data.name.toLowerCase().includes((key as string).toLowerCase())
+            )[0] as TeamMessage;
     }
 
 

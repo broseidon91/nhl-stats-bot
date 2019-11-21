@@ -10,7 +10,7 @@ export class TeamMessage {
         this.data = data;
     }
 
-    public GetMessage() {
+    public GetRichEmbed() {
 
         var thumb = `http://cdn.nhle.com/nhl/images/logos/teams/${this.data.abbreviation}_logo.svgz`;
         console.log(thumb);

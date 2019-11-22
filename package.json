@@ -10,6 +10,7 @@
     "discord.js": "^11.5.1",
     "json-beautify": "^1.1.1",
     "node": "^12.11.0",
+    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2",

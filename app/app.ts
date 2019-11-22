@@ -41,28 +41,33 @@ client.on("error", (e) => {
 });
 
 
-client.on('message', msg => {
+client.on('message', async msg => {
     if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+    try {
+        let args = msg.content.slice(1).trim().split(/ +/g);
 
-    let args = msg.content.slice(1).trim().split(/ +/g);
+        let command = args.shift();
+        if (command)
+            command = command.toLowerCase();
+        else
+            return;
 
-    let command = args.shift();
-    if (command)
-        command = command.toLowerCase();
-    else
-        return;
+        if (command === "team" && args.length > 0) {
 
-    if (command === "team" && args.length > 0) {
+            var id: any = args[0];
+            if (!isNaN(Number(id))) {
+                id = Number(id);
+            }
+            var message = teams.GetTeam(id);
+            if (message) {
 
-        var id: any = args[0];
-        if (!isNaN(Number(id))) {
-            id = Number(id);
+                let embed = await message.GetRichEmbed();
+                msg.channel.send(embed);
+            }
         }
-        var message = teams.GetTeam(id);
-        if (message)
-            msg.channel.send(message.GetRichEmbed());
-    }
+    } catch (error) {
 
+    }
 
 
 });

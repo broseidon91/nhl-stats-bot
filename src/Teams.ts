@@ -17,7 +17,6 @@ export class Teams {
     }
 
     public GetTeam(key: number | string): TeamMessage {
-        console.log(typeof key);
         if (typeof key === 'number') {
             if (this.teams.has(key)) {
                 return this.teams.get(key) as TeamMessage;
